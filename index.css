@@ -1,0 +1,318 @@
+:root {
+  font-size: 12px;
+
+  /* COLORS */
+  --blue: #314077;
+  --grey: #f4f5f8;
+  --card1-back: #1983a8;
+  --card1-circle: #148fb1;
+  --card2-back: #0a75c6;
+  --card2-circle: #126ab6;
+  --card3-back: #574cbb;
+  --card3-circle: #4f49ad;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  z-index: -1;
+  background: var(--blue);
+  /* overflow: hidden; control scrolling for main section height: 1000px */
+}
+
+.white-text {
+  color: white;
+}
+
+.title-strip {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--blue);
+}
+
+.see-all {
+  width: fit-content;
+  
+  font-size: 1.4rem;
+}
+
+.header {
+  padding: 50px 20px 75px;
+}
+
+.greeting {
+  position: relative;
+  width: 100%;
+
+  font-size: 2rem;
+  line-height: 2.5rem;
+
+  margin-bottom: 20px;
+  /* border: 1px solid green; */
+}
+
+.greeting span {
+  display: block; /*hello and Johnathan on separate lines*/
+
+  color: white;
+  letter-spacing: 1.5px;
+}
+
+.greeting span:nth-child(1) { /*hello*/
+  color: grey;
+}
+
+.profile { /*user-icon*/
+  position: absolute;
+  top: 2px;
+  right: 0;
+  height: fit-content;
+  
+  display: flex;
+  flex-direction: column;
+
+  font-size: 3rem;
+  color: white;
+}
+
+.main {
+  position: relative;
+  height: 800px;
+
+  border-radius: 30px;
+  background: var(--grey);
+}
+
+.carousel {
+  position: absolute;
+  top: -60px;
+  width: 100%;
+
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 10px;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(55% - 25px * 2); /*show two full cards and a bit of another*/
+  grid-template-rows: minmax(230px, 1fr);
+
+  overflow-x: scroll;
+}
+
+.carousel::before,
+.carousel::after {
+  content: '';
+  width: 10px;
+}
+
+/* CARDS */
+.card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  color: white;
+
+  padding: 20px;
+
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.card::before {
+  position: absolute;
+  top: -35%;
+  left: -45%;
+  z-index: -1;
+
+  content: '';
+  width: 200px;
+  height: 200px;
+
+  border-radius: 50%;
+}
+
+.card::after {
+  position: absolute;
+  bottom: -20%;
+  right: -80%;
+  z-index: -1;
+
+  content: '';
+  width: 200px;
+  height: 200px;
+
+  border-radius: 50%;
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2.45rem;
+  color: grey;
+
+  background: white;
+  border-radius: 50%;
+}
+
+.card-title {
+  font-size: 1.75rem;
+}
+
+.card > div span {
+  display: block;
+}
+
+.card > div span:nth-child(1) {
+  color: rgba(255,255,255,.6);
+  margin-bottom: 5px;
+}
+
+.card > div span:nth-child(2) {
+  font-size: 1.07rem;
+}
+
+.card:nth-child(1) {
+  background: var(--card1-back);
+}
+
+.c1::before, .c1::after {
+  background: var(--card1-circle);
+}
+
+.card:nth-child(2) {
+  background: var(--card2-back);
+}
+
+.c2::before, .c2::after {
+  background: var(--card2-circle);
+}
+
+.card:nth-child(3) {
+  background: var(--card3-back);
+}
+
+.c3::before, .c3::after {
+  background: var(--card3-circle);
+}
+/* ***************************** */
+
+.main .title-strip {
+  position: absolute;
+  margin-top: 200px;
+
+  padding: 0 20px;
+}
+
+.main .title-strip > div:nth-child(1) { /*Cloud Repo*/
+   font-size: 1.7rem;
+}
+
+/* FILE SECTION */
+.files {
+  position: absolute;
+  margin-top: 240px;
+  /* z-index: 10; */
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 20px;
+  overflow-y: scroll; /*only scroll files within the ocntainer*/
+  
+}
+
+.file {
+ position: relative;
+ display: flex;
+ align-items: center;
+
+ padding: 20px;
+ margin-bottom: 10px;
+
+ background: white;
+
+ border-radius: 10px;
+}
+
+.file-icon {
+  font-size: 3rem;
+  margin-right: 20px;
+}
+
+.more-icon {
+  font-size: 2rem;
+  margin-right: 20px;
+  color: grey;
+}
+
+.file-info {
+  font-size: 1.3rem;
+}
+
+.file-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.more-icon {
+  position: absolute;
+  right: 0;
+}
+
+.pdf { color: red; }
+.img { color: green; }
+.zip { color: purple; }
+.code { color: orange; }
+
+.menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+
+  padding: 5px 0 0;
+  background: var(--grey);
+
+  box-shadow: 0 -10px 10px rgba(0,0,0,.1);
+}
+
+.menu > div {
+  font-size: 2.5rem;
+}
+
+.cta {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+
+  margin-top: -20px;
+  border-radius: 15px;
+  background: var(--blue);
+}
