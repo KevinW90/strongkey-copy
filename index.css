@@ -12,10 +12,6 @@
   --card3-circle: #4f49ad;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 html, body {
   width: 100%;
   height: 100%;
@@ -24,12 +20,28 @@ html, body {
 }
 
 body {
-  position: relative;
-  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   font-family: sans-serif;
 
+  background: black;
+}
+
+.strongkey {
+  position: relative;
+  width: 411px;
+  height: 812px;
+
   background: var(--blue);
+  border-top: 55px solid silver;
+  border-left: 25px solid silver;
+  border-right: 25px solid silver;
+  border-bottom: 55px solid silver;
+  border-radius: 25px;
+
+  /* overflow-y: hidden; */
 }
 
 .white-text {
@@ -91,7 +103,7 @@ body {
 
 .main {
   position: relative;
-  height: 800px;
+  height: 575px;
 
   border-radius: 30px;
   background: var(--grey);
@@ -99,6 +111,7 @@ body {
 
 .carousel {
   position: absolute;
+  /* z-index: 10; */
   top: -60px;
   width: 100%;
 
@@ -106,10 +119,15 @@ body {
   gap: 10px;
   grid-template-columns: 10px;
   grid-auto-flow: column;
-  grid-auto-columns: calc(55% - 25px * 2); /*show two full cards and a bit of another*/
+  grid-auto-columns: calc(55% - 30px * 2); /*show two full cards and a bit of another*/
   grid-template-rows: minmax(230px, 1fr);
 
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
+}
+
+.carousel::-webkit-scrollbar {
+  /* width: 10px; */
+  /* height: 10px; */
 }
 
 .carousel::before,
@@ -221,6 +239,7 @@ body {
 .main .title-strip {
   position: absolute;
   margin-top: 200px;
+  width: 371px;
 
   padding: 0 20px;
 }
@@ -232,16 +251,23 @@ body {
 /* FILE SECTION */
 .files {
   position: absolute;
+  left: 0;
   margin-top: 240px;
-  /* z-index: 10; */
-  width: 100%;
-
+  /* z-index: -1; */
+  width: 371px;
+  height: 300px;
   display: flex;
   flex-direction: column;
 
   padding: 0 20px;
-  overflow-y: scroll; /*only scroll files within the ocntainer*/
-  
+
+  /* border: 1px solid red; */
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.files::-webkit-scrollbar {
+  width: 0 !important;
 }
 
 .file {
@@ -288,15 +314,18 @@ body {
 .code { color: orange; }
 
 .menu {
-  position: fixed;
+  position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  width: 411px;
+
 
   display: flex;
   justify-content: space-around;
   align-items: center;
 
-  padding: 5px 20px;
+  padding: 5px 0;
   background: var(--grey);
 
   box-shadow: 0 -10px 10px rgba(0,0,0,.1);
