@@ -26,8 +26,10 @@ html, body {
 body {
   position: relative;
   z-index: -1;
+
+  font-family: sans-serif;
+
   background: var(--blue);
-  /* overflow: hidden; control scrolling for main section height: 1000px */
 }
 
 .white-text {
